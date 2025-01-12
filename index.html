@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newton's Law of Motion</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0%;
+        box-sizing: border-box;
+      }
+
+      html {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        background: url("/background.mp4");
+        /* background-position: center;
+                background-size: 100% 100%;
+                background-repeat: no-repeat; */
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      #GravityZone {
+        position: relative;
+        /* margin: 10px auto; */
+        /* background-color: white; */
+        width: 100vw;
+        height: 100vh;
+      }
+
+      #testObject {
+        border-radius: 50%;
+        bottom: 0px;
+        position: absolute;
+        /* background-color: green; */
+        width: 50px;
+        height: 50px;
+        /* transition: all ease-in-out 1s; */
+      }
+
+      #testObject img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .animate {
+        animation: Rotate 3s linear infinite;
+      }
+
+      #parameterdiv {
+        display: flex;
+        gap: 10px;
+        position: relative;
+        top: 20px;
+        flex-direction: row;
+      }
+
+      .parameters {
+        width: 100%;
+        display: block;
+        border-radius: 5px;
+        padding: 10px;
+        z-index: 2;
+        font-weight: bolder;
+        /* border: none; */
+      }
+
+      @keyframes Rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .back-video {
+        position: absolute;
+        /* margin: 0px auto; */
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        z-index: -2;
+      }
+      #canva{
+        position: absolute;
+        z-index: 1;
+        bottom: 0px;
+        font-size: smaller;
+        /* overflow: hidden; */
+      }
+      .coordinate{
+        position: absolute;
+      }
+      #outputs{
+        background-image: url("board.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding: 12px 50px;
+        position: absolute;
+        right: 10px;
+        top: 70px;
+        font-family: cursive;
+        width: 250px;
+      }
+      #currentCoordinate{
+        display: grid;
+        grid-template-columns: 50% 50%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <video autoplay loop muted plays-inline class="back-video">
+      <source src="background.mp4" type="video/mp4" />
+    </video>
+    <div id="canva"></div>
+    <div id="GravityZone">
+      <div id="parameterdiv">
+        <input type="number" id="speedPara" class="parameters" placeholder="Enter speed" />
+        <input type="number" id="anglePara" class="parameters" placeholder="Enter the projection angle" />
+        <input type="number" id="AccX" class="parameters" placeholder="Enter Acceleration in X dir." />
+        <input type="number" id="AccY" class="parameters" placeholder="Enter Acceleration in Y dir." />
+        <button type="button" id="GoBtn" class="parameters">Go</button>
+      </div>
+      <div id="outputs">
+        <div id="currentCoordinate">
+          <div>X: 0</div>
+          <div>Y: 0</div>
+        </div>
+        <p id="Speed">Speed: 0 </p>
+        <p id="Time">Time: 0 sec</p>
+      </div>
+      <div id="testObject">
+        <img src="football.png" alt="football" class="" />
+      </div>
+    </div>
+  </body>
+  <script src="index.js"></script>
+
+</html>
